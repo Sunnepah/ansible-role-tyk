@@ -1,0 +1,19 @@
+---
+# defaults file for tyk
+
+tyk_gateway_port: 8080
+tyk_secret: 352d20ee67be67f6340b4c0605b044b7
+hash_keys: true
+
+# make sure you add this (192.168.33.30 http://tyk-local.com tyk-local.com) to your local /etc/hosts file
+tyk_dashboard_url: "http://tyk-local.com"
+tyk_dashboard_port: 3000
+tyk_dashboard_domain: "tyk-local.com"
+
+redishost: localhost
+redisport: 6379
+
+mongodb_url: "mongodb://127.0.0.1/tyk_analytics"
+
+# Get one from https://tyk.io/tyk-professional-licenses/
+license_key: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd2VkX25vZGVzIjoiMDNmZTY1YWMtNjUzNi00ZjQyLTY3Y2ItYjM1ZTk4NzMyMWEyIiwiZXhwIjoxNDkzOTk4NzQzLCJvd25lciI6IjU3MzIwMDk3NDVmOTJlNjY4OTAwMDAyZSJ9.of_OF-unt2vRpan9cH_IbzYygpnUoLe3jU7cngZId8wQp1jocgL_GTqE6cDQV_WwMcddzZ5_cpaU3bALIlFnmOGR2lPqZ8Mvg5L7JqDWFS4l9yjqMO4u87tfAwsj8c-A9xWRd-Wji8CbLSFS3t2hZecTUM2x7NDqCZ3WMjzf9xG7aXkQffwZCE9dvTkAFdkg5JMmY2inne-zfNijj54v8QD07RsHYsBRj3tmk21kM6bCkr3CIJdjKJBgCGiruhrMmPQBciFlBbC8kOKlLfikuweew2PcD0NBgjb8OuKIj4OV7fLrqDqzI6166juCIrhTdCip-0sWXcweSPbuDYUiFw"

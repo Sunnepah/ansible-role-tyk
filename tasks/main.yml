@@ -1,0 +1,69 @@
+---
+# tasks file for tyk
+
+# - name: Install Mongo and Redis
+#   shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+
+# - name: downloads-distro
+#   shell: echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+# - name: Update aptitude cache and install dependencies.
+#   apt:
+#     pkg={{ item }}
+#     state=present
+#     update_cache=yes
+#     cache_valid_time=3600
+#   with_items:
+#     - mongodb-org
+#     - redis-server
+#     - vim
+#     - curl
+
+# - name: Add Tyk Gateway repository
+#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-gateway/script.deb.sh | sudo bash
+
+# - name: Install Tyk Gateway
+#   shell: apt-get install tyk-gateway
+
+# - name: Add Tyk Dashboard repository
+#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-dashboard/script.deb.sh | sudo bash
+
+# - name: Install Tyk Dashboard
+#   shell: apt-get install tyk-dashboard
+
+# - name: Add Tyk Pump repository
+#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-pump/script.deb.sh | sudo bash
+
+# - name: Install Tyk Pump
+#   shell: apt-get install tyk-pump
+
+- name: Configure Tyk Gateway
+  shell: /opt/tyk-gateway/install/setup.sh --dashboard="{{ tyk_dashboard_url }}:{{ tyk_dashboard_port }}" --listenport={{ tyk_gateway_port }} --redishost={{ redishost }} --redisport={{ redisport }} --domain=""
+
+- name: Configure Tyk Dashboard
+  shell: /opt/tyk-dashboard/install/setup.sh --listenport={{ tyk_dashboard_port }} --redishost={{ redishost }} --redisport={{ redisport }} --mongo={{ mongodb_url }} --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port={{ tyk_gateway_port }} --portal_root=/portal --domain="{{ tyk_dashboard_domain }}"
+
+- name: Configure Tyk Pump
+  shell: /opt/tyk-pump/install/setup.sh --redishost={{ redishost }} --redisport={{ redisport }} --mongo={{ mongodb_url }}
+
+- name: Set up dashboard parameters
+  template: src=tyk_analytics.conf dest=/opt/tyk-dashboard/tyk_analytics.conf mode=0644
+
+- name: Set up gateway parameters
+  template: src=tyk.conf dest=/opt/tyk-gateway/tyk.conf mode=0644
+  notify:
+    - restart tyk-dashboard
+    - restart tyk-pump
+    - restart tyk-gateway
+
+- name: Start dashboard
+  service: name=tyk-dashboard state=started enabled=yes
+
+- name: Start Pump
+  service: name=tyk-pump state=started enabled=yes
+
+- name: Start Gateway
+  service: name=tyk-gateway state=started enabled=yes
+
+- name: Bootstrap up test user
+  shell: /opt/tyk-dashboard/install/bootstrap.sh {{ tyk_dashboard_domain }}

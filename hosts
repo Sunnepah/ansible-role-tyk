@@ -1,0 +1,5 @@
+[tyk-vagrant]
+192.168.33.30
+
+[tyk-local]
+localhost              ansible_connection=local

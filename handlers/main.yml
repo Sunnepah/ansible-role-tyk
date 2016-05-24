@@ -1,0 +1,11 @@
+---
+# handlers file for tyk
+
+- name: restart tyk-gateway
+  service: name=tyk-gateway state=restarted
+
+- name: restart tyk-dashboard
+  service: name=tyk-dashboard state=restarted
+
+- name: restart tyk-pump
+  service: name=tyk-pump state=restarted
