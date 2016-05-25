@@ -1,6 +1,6 @@
 # Ansible Role: Tyk
 
-[![Build Status](https://travis-ci.org/sunnepah/ansible-role-tyk.svg?branch=master)](https://travis-ci.org/sunnepah/ansible-role-tyk)
+[![Build Status](https://travis-ci.org/Sunnepah/ansible-role-tyk.svg?branch=master)](https://travis-ci.org/Sunnepah/ansible-role-tyk)
 
 Installs and configures Tyk API Gateway on Debian/Ubuntu servers.
 
