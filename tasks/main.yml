@@ -1,41 +1,41 @@
 ---
 # tasks file for tyk
 
-# - name: Install Mongo and Redis
-#   shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+- name: Install Mongo and Redis
+  shell: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 
-# - name: downloads-distro
-#   shell: echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+- name: downloads-distro
+  shell: echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
 
-# - name: Update aptitude cache and install dependencies.
-#   apt:
-#     pkg={{ item }}
-#     state=present
-#     update_cache=yes
-#     cache_valid_time=3600
-#   with_items:
-#     - mongodb-org
-#     - redis-server
-#     - vim
-#     - curl
+- name: Update aptitude cache and install dependencies.
+  apt:
+    pkg={{ item }}
+    state=present
+    update_cache=yes
+    cache_valid_time=3600
+  with_items:
+    - mongodb-org
+    - redis-server
+    - vim
+    - curl
 
-# - name: Add Tyk Gateway repository
-#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-gateway/script.deb.sh | sudo bash
+- name: Add Tyk Gateway repository
+  shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-gateway/script.deb.sh | sudo bash
 
-# - name: Install Tyk Gateway
-#   shell: apt-get install tyk-gateway
+- name: Install Tyk Gateway
+  shell: apt-get install tyk-gateway
 
-# - name: Add Tyk Dashboard repository
-#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-dashboard/script.deb.sh | sudo bash
+- name: Add Tyk Dashboard repository
+  shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-dashboard/script.deb.sh | sudo bash
 
-# - name: Install Tyk Dashboard
-#   shell: apt-get install tyk-dashboard
+- name: Install Tyk Dashboard
+  shell: apt-get install tyk-dashboard
 
-# - name: Add Tyk Pump repository
-#   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-pump/script.deb.sh | sudo bash
+- name: Add Tyk Pump repository
+  shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-pump/script.deb.sh | sudo bash
 
-# - name: Install Tyk Pump
-#   shell: apt-get install tyk-pump
+- name: Install Tyk Pump
+  shell: apt-get install tyk-pump
 
 - name: Configure Tyk Gateway
   shell: /opt/tyk-gateway/install/setup.sh --dashboard="{{ tyk_dashboard_url }}:{{ tyk_dashboard_port }}" --listenport={{ tyk_gateway_port }} --redishost={{ redishost }} --redisport={{ redisport }} --domain=""
