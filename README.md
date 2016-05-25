@@ -62,7 +62,7 @@ None.
       vars_files:
       	- vars/main.yml
       roles:
-         - { role: sunnepah.tyk}
+         - { role: Sunnepah.tyk}
 
 *Inside `vars/main.yml`*:
 
