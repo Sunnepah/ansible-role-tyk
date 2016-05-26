@@ -82,6 +82,12 @@ None.
 	# Get one from https://tyk.io/tyk-professional-licenses/
 	license_key: node license
 
+*NOTE
+	
+	Once the playbook runs successfully login to the VM and bootsrap a user
+	$ vagrant ssh
+	$ /opt/tyk-dashboard/install/bootstrap.sh tyk-local.com
+
 ## License
 
 MIT / BSD
