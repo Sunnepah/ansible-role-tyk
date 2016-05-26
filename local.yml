@@ -5,4 +5,4 @@
   remote_user: root
   become: yes
   roles:
-    - sunnepah.tyk
+    - Sunnepah.tyk

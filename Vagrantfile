@@ -33,6 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
        ansible.groups = {
        "dev" => ["default"]
        }
+       ansible.verbose = "vvv"
        ansible.playbook = "local.yml"
     end
 
@@ -41,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #  s.inline = "echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse' >> /etc/apt/sources.list"
     #  s.inline += "&& apt-get update"
     #  s.inline += "&& apt-get install -y ansible"
-    #  s.inline += "&& ansible-galaxy install sunnepah.tyk --force"
+    #  s.inline += "&& ansible-galaxy install Sunnepah.tyk --force"
     #  s.inline += "&& ansible-playbook -i /etc/ansible/roles/sunnepah.tyk/hosts /etc/ansible/roles/sunnepah.tyk/local.yml -v"
     # end
 end
