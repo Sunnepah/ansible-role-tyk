@@ -23,19 +23,19 @@
   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-gateway/script.deb.sh | sudo bash
 
 - name: Install Tyk Gateway
-  shell: apt-get install tyk-gateway
+  apt: name=tyk-gateway state=present update_cache=yes cache_valid_time=3600
 
 - name: Add Tyk Dashboard repository
   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-dashboard/script.deb.sh | sudo bash
 
 - name: Install Tyk Dashboard
-  shell: apt-get install tyk-dashboard
+  apt: name=tyk-dashboard state=present update_cache=yes cache_valid_time=3600
 
 - name: Add Tyk Pump repository
   shell: curl -s https://packagecloud.io/install/repositories/tyk/tyk-pump/script.deb.sh | sudo bash
 
 - name: Install Tyk Pump
-  shell: apt-get install tyk-pump
+  apt: name=tyk-pump state=present update_cache=yes cache_valid_time=3600
 
 - name: Configure Tyk Gateway
   shell: /opt/tyk-gateway/install/setup.sh --dashboard="{{ tyk_dashboard_url }}:{{ tyk_dashboard_port }}" --listenport={{ tyk_gateway_port }} --redishost={{ redishost }} --redisport={{ redisport }} --domain=""
@@ -48,6 +48,9 @@
 
 - name: Set up dashboard parameters
   template: src=tyk_analytics.conf dest=/opt/tyk-dashboard/tyk_analytics.conf mode=0644
+
+- name: Add Tyk Domain to Hosts File
+  shell: echo '127.0.0.1 {{ tyk_dashboard_domain }}' | sudo tee --append /etc/hosts
 
 - name: Set up gateway parameters
   template: src=tyk.conf dest=/opt/tyk-gateway/tyk.conf mode=0644
