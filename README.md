@@ -24,7 +24,7 @@ Tyk node secret
 
 Whether keys should be hashed
 
-	tyk_dashboard_url: "http://tyk-local.com"
+	tyk_dashboard_url: "http://my-tyk-instance.dev"
 
 Tyk dashboard url
 
@@ -32,7 +32,7 @@ Tyk dashboard url
 
 Tyk dashboard listening port
 
-	tyk_dashboard_domain: "tyk-local.com"
+	tyk_dashboard_domain: "my-tyk-instance.dev"
 
 Tyk dashboard domain
 
@@ -70,9 +70,9 @@ None.
 	tyk_secret: secured-tyk-node-secret
 	hash_keys: true
 
-	tyk_dashboard_url: "http://tyk-local.com"
+	tyk_dashboard_url: "http://my-tyk-instance.dev"
 	tyk_dashboard_port: 3000
-	tyk_dashboard_domain: "tyk-local.com"
+	tyk_dashboard_domain: "my-tyk-instance.dev"
 
 	redishost: localhost
 	redisport: 6379
@@ -86,7 +86,7 @@ None.
 	
 	Once the playbook runs successfully login to the VM and bootsrap a user
 	$ vagrant ssh
-	$ /opt/tyk-dashboard/install/bootstrap.sh tyk-local.com
+	$ /opt/tyk-dashboard/install/bootstrap.sh my-tyk-instance.dev
 
 ## License
 

@@ -5,10 +5,10 @@ tyk_gateway_port: 8080
 tyk_secret: 352d20ee67be67f6340b4c0605b044b7
 hash_keys: "false"
 
-# make sure you add this (192.168.33.30 http://tyk-local.com tyk-local.com) to your local /etc/hosts file
-tyk_dashboard_url: "http://tyk-local.com"
+# make sure you add this (192.168.33.30 http://my-tyk-instance.dev my-tyk-instance.dev) to your local /etc/hosts file
+tyk_dashboard_url: "http://my-tyk-instance.dev"
 tyk_dashboard_port: 3000
-tyk_dashboard_domain: "tyk-local.com"
+tyk_dashboard_domain: "my-tyk-instance.dev"
 
 redishost: localhost
 redisport: 6379
