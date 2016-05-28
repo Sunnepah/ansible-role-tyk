@@ -3,7 +3,7 @@
 
 tyk_gateway_port: 8080
 tyk_secret: 352d20ee67be67f6340b4c0605b044b7
-hash_keys: true
+hash_keys: false
 
 # make sure you add this (192.168.33.30 http://tyk-local.com tyk-local.com) to your local /etc/hosts file
 tyk_dashboard_url: "http://tyk-local.com"
@@ -16,4 +16,4 @@ redisport: 6379
 mongodb_url: "mongodb://127.0.0.1/tyk_analytics"
 
 # Get one from https://tyk.io/tyk-professional-licenses/
-license_key: "fuyyiuu8798u8"
+license_key: ""
